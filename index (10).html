@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advisora - Design that drives SaaS growth</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        /* Main container */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header styles */
+        .header {
+            background-color: #f2f7ff;
+            border-radius: 20px;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .logo-icon {
+            background-color: #3b82f6;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin-right: 20px;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .dropdown-icon {
+            display: inline-block;
+            margin-left: 5px;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .sign-in {
+            background: none;
+            border: none;
+            color: #333;
+            font-weight: 500;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 30px;
+        }
+        
+        .sign-up {
+            background-color: #3b82f6;
+            border: none;
+            color: white;
+            font-weight: 500;
+            padding: 15px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        
+        /* Hero section */
+        .hero {
+            display: flex;
+            background-color: #f2f7ff;
+            border-radius: 20px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding: 80px 60px;
+        }
+        
+        .hero-title {
+            font-size: 64px;
+            line-height: 1.1;
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 30px;
+        }
+        
+        .hero-description {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 550px;
+            margin-bottom: 40px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            margin-bottom: 60px;
+        }
+        
+        .get-started {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 20px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .get-started:hover {
+            background-color: #2563eb;
+        }
+        
+        .get-started-icon {
+            margin-left: 10px;
+        }
+        
+        .users-joined {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-avatars {
+            display: flex;
+            margin-right: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #f2f7ff;
+            margin-left: -10px;
+            background-size: cover;
+            background-position: center top;
+            overflow: hidden;
+        }
+        
+        .user-avatar:first-child {
+            margin-left: 0;
+        }
+        
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .user-count {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: -10px;
+        }
+        
+        .joined-text {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        /* Hero image section */
+        .hero-image-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        /* Analytics cards */
+        .analytics-card {
+            position: absolute;
+            background-color: white;
+            border-radius: 30px;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        
+        .analytics-card.realtime {
+            top: 30%;
+            left: 10%;
+        }
+        
+        .analytics-card.digital {
+            top: 60%;
+            right: 5%;
+        }
+        
+        .card-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 10px;
+        }
+        
+        .card-text {
+            font-weight: 500;
+        }
+        
+        /* Expenses chart */
+        .expenses-chart {
+            position: absolute;
+            bottom: 10%;
+            left: 10%;
+            background-color: white;
+            border-radius: 20px;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .chart-title {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .chart-dropdown {
+            font-size: 14px;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
+        
+        .chart-dropdown-icon {
+            margin-left: 5px;
+        }
+        
+        .chart-percentage {
+            font-size: 48px;
+            font-weight: bold;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+        
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            height: 100px;
+            gap: 10px;
+        }
+        
+        .chart-bar {
+            flex: 1;
+            background-color: #3b82f6;
+            border-radius: 10px;
+        }
+        
+        .chart-bar:nth-child(odd) {
+            opacity: 0.7;
+        }
+        
+        .chart-bar:nth-child(even) {
+            opacity: 0.4;
+        }
+        
+        .chart-bar-1 { height: 60%; }
+        .chart-bar-2 { height: 80%; }
+        .chart-bar-3 { height: 50%; }
+        .chart-bar-4 { height: 40%; }
+        .chart-bar-5 { height: 90%; }
+        .chart-bar-6 { height: 100%; }
+        
+        /* Responsive styles */
+        @media (max-width: 1200px) {
+            .hero {
+                flex-direction: column;
+            }
+            
+            .hero-content {
+                padding: 60px 40px;
+            }
+            
+            .hero-image-container {
+                height: 500px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .nav {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .get-started {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .users-joined {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .user-avatars {
+                margin-bottom: 15px;
+            }
+            
+            .analytics-card.realtime {
+                top: 20%;
+                left: 5%;
+            }
+            
+            .analytics-card.digital {
+                top: 70%;
+                right: 5%;
+            }
+            
+            .expenses-chart {
+                bottom: 5%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                Advisora
+            </div>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#">Home V.1</a></li>
+                    <li><a href="#">About V.1</a></li>
+                    <li><a href="#">Contact V.1</a></li>
+                    <li><a href="#">Pages <span class="dropdown-icon">▼</span></a></li>
+                    <li><a href="#">Cart (0)</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button class="sign-in">Sign in</button>
+                    <button class="sign-up">Sign up</button>
+                </div>
+            </nav>
+        </header>
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Design that drives SaaS growth. Powered by AI.</h1>
+                <p class="hero-description">
+                    We create intuitive, conversion-focused user experiences for SaaS products
+                    that accelerate adoption, retention, and business growth.
+                </p>
+                <div class="hero-buttons">
+                    <button class="get-started">
+                        Book a Free SaaS Design Consultation
+                        <span class="get-started-icon">→</span>
+                    </button>
+                </div>
+                <div class="users-joined">
+                    <div class="user-avatars">
+                        <!-- Using the provided avatar images -->
+                        <div class="user-avatar">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-04-20%20160124-GOY496O1hAbk7aaK1sDA8HvEu59SEf.png" alt="User avatar 1">
+                        </div>
+                        <div class="user-avatar">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-04-13%20092412-KvHY9RfvV8l5mleDSDr3HaBQCQePAw.png" alt="User avatar 2">
+                        </div>
+                        <div class="user-avatar">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-04-20%20154424-Lw4WN8aFXZNziZYAevGjBzNtxeoUG8.png" alt="User avatar 3">
+                        </div>
+                        <div class="user-avatar">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-04-13%20092412-KvHY9RfvV8l5mleDSDr3HaBQCQePAw.png" alt="User avatar 4">
+                        </div>
+                        <div class="user-count">10K+</div>
+                    </div>
+                    <div class="joined-text">10,000+ people already joined the Advisora</div>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <!-- Using the new provided image -->
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Apr%2027%2C%202025%2C%2001_14_33%20AM-uxz8Jbnrm52KZvvNfyz9Ode2Kzztfz.png" alt="AI-powered SaaS design visualization" class="hero-image">
+            </div>
+        </section>
+    </div>
+</body>
+</html>
